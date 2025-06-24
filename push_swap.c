@@ -6,19 +6,19 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/06/23 21:45:17 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/06/24 22:47:37 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char**	make_a_bis(char **argv)
+int	verify_argv_bis(int argc, char **argv)
 {
 	int	i;
-	int	j;
+	int j;
 
 	i = 1;
-	while (argv[i])
+	while (i < argc)
 	{
 		j = 0;
 		while (argv[i][j])
@@ -29,51 +29,45 @@ char**	make_a_bis(char **argv)
 		}
 		i++;
 	}
-	return (argv);
+	return (1);
 }
 
-char**	make_a(int argc, char **argv)
+int	verify_argv(int argc, char **argv)
 {
 	char	**res;
 	int		i;
 	int		j;
-
+	
 	if (argc == 2)
 	{
-		res = ft_split(argv, ' ');
-		if (!res)
-			return (0);
-		i = 0;
-		while (res[i])
+		res = ft_split(argv[1], ' ');
+		j = 0;
+		while (res[j])
 		{
-			j = 0;
-			while (res[i][j])
+			i = 0;
+			while (res[j][i])
 			{
-				if (!ft_isdigit(res[i][j]))
-				{
-					free_a(res);
-					return (0);
-				}
-				j++;
+				if (!ft_isdigit(res[j][i]))
+					return (free(res), 0);
+				i++;
 			}
-			i++;
+			j++;
 		}
+		return (free(res), 1);
 	}
-	else
-	{
-		return (make_a_bis(argv));
-	}
-	return (res);
+	return (verify_argv_bis(argc, argv));
 }
 
 int	main(int argc, char **argv)
 {
-	char	*a;
-	if (argc >= 1)
+	//char	*a;
+
+	if (argc <= 1)
 		return (1);
-	if (!make_a(argc, argv))
+	if (!verify_argv(argc, argv))
 	{
 		ft_printf("Error");
 		return (1);
 	}
+	return (0);
 }
