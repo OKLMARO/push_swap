@@ -6,11 +6,24 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/06/24 22:47:37 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/06/25 15:14:09 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static	void	free_double(char **tab_str)
+{
+	int	i;
+
+	i = 0;
+	while (tab_str[i])
+	{
+		free(tab_str[i]);
+		i++;
+	}
+	free(tab_str);
+}
 
 int	verify_argv_bis(int argc, char **argv)
 {
@@ -48,19 +61,20 @@ int	verify_argv(int argc, char **argv)
 			while (res[j][i])
 			{
 				if (!ft_isdigit(res[j][i]))
-					return (free(res), 0);
+					return (free_double(res), 0);
 				i++;
 			}
 			j++;
 		}
-		return (free(res), 1);
+		return (free_double(res), 1);
 	}
 	return (verify_argv_bis(argc, argv));
 }
 
 int	main(int argc, char **argv)
 {
-	//char	*a;
+	//t_list	*a;
+	//t_list	*b;
 
 	if (argc <= 1)
 		return (1);
