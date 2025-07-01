@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/06/30 12:58:24 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/06/30 22:49:12 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,29 @@ int	verify_argv(int argc, char **argv)
 	return (verify_argv_bis(argc, argv));
 }
 
+int	make_storage_bis(int argc, char **argv, t_list *a)
+{
+	int		i;
+	int		*temp_int;
+	t_list	*temp_lst;
+
+	i = 1;
+	while (argv[i])
+	{
+		temp_int = malloc(sizeof(int));
+		if (!temp_int)
+			return (ft_lstclear(&a, free), 0);
+		temp_int[0] = ft_atoi(argv[i]);
+		temp_lst = ft_lstnew(temp_int);
+		if (!temp_lst)
+			return (ft_lstclear(&a, free), 0);
+		ft_lstadd_back(&a, temp_lst);
+		free(temp_lst);
+		i++;
+	}
+	return (i);
+}
+
 int	make_storage(int argc, char **argv, t_list *a)
 {
 	char	**temp;
@@ -101,21 +124,7 @@ int	make_storage(int argc, char **argv, t_list *a)
 		}
 		return (1);
 	}
-	i = 1;
-	while (argv[i])
-	{
-		temp_int = malloc(sizeof(int));
-		if (!temp_int)
-			return (ft_lstclear(&a, free), 0);
-		temp_int[0] = ft_atoi(temp[i]);
-		temp_lst = ft_lstnew(temp_int);
-		if (!temp_lst)
-			return (ft_lstclear(&a, free), 0);
-		ft_lstadd_back(&a, temp_lst);
-		free(temp_lst);
-		i++;
-	}
-	return (1);
+	return (make_storage_bis(argc, argv, a));
 }
 
 int	main(int argc, char **argv)
