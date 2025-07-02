@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/06/30 22:49:12 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/02 13:21:36 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,33 +75,40 @@ int	verify_argv(int argc, char **argv)
 	return (verify_argv_bis(argc, argv));
 }
 
-int	make_storage_bis(int argc, char **argv, t_list *a)
+int	make_storage_bis(int argc, char **argv, t_list **a)
 {
 	int		i;
+	int		j;
 	int		*temp_int;
 	t_list	*temp_lst;
 
 	i = 1;
 	while (argv[i])
 	{
+		j = 0;
 		temp_int = malloc(sizeof(int));
 		if (!temp_int)
-			return (ft_lstclear(&a, free), 0);
-		temp_int[0] = ft_atoi(argv[i]);
+			return (ft_lstclear(a, free), 0);
+		while (argv[i][j])
+		{
+			temp_int[j] = argv[i][j];
+			j++;
+		}
 		temp_lst = ft_lstnew(temp_int);
 		if (!temp_lst)
-			return (ft_lstclear(&a, free), 0);
-		ft_lstadd_back(&a, temp_lst);
+			return (ft_lstclear(a, free), 0);
+		ft_lstadd_back(a, temp_lst);
 		free(temp_lst);
 		i++;
 	}
 	return (i);
 }
 
-int	make_storage(int argc, char **argv, t_list *a)
+int	make_storage(int argc, char **argv, t_list **a)
 {
 	char	**temp;
 	int		i;
+	int		j;
 	int		*temp_int;
 	t_list	*temp_lst;
 
@@ -111,14 +118,19 @@ int	make_storage(int argc, char **argv, t_list *a)
 		i = 0;
 		while (temp[i])
 		{
+			j = 0;
 			temp_int = malloc(sizeof(int));
 			if (!temp_int)
-				return (ft_lstclear(&a, free), 0);
-			temp_int[0] = ft_atoi(temp[i]);
+				return (ft_lstclear(a, free), 0);
+			while (temp[i][j])
+			{
+				temp_int[j] = temp[i][j];
+				j++;
+			}
 			temp_lst = ft_lstnew(temp_int);
 			if (!temp_lst)
-				return (ft_lstclear(&a, free), 0);
-			ft_lstadd_back(&a, temp_lst);
+				return (ft_lstclear(a, free), 0);
+			ft_lstadd_back(a, temp_lst);
 			free(temp_lst);
 			i++;
 		}
@@ -129,8 +141,8 @@ int	make_storage(int argc, char **argv, t_list *a)
 
 int	main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
+	t_list	**a;
+	t_list	**b;
 	int		taille;
 
 	if (argc <= 1)
@@ -141,13 +153,14 @@ int	main(int argc, char **argv)
 		ft_printf("Error");
 		return (1);
 	}
+	a = malloc(sizeof(t_list));
+	b = malloc(sizeof(t_list));
 	make_storage(argc, argv, a);
 	int i = 0;
-	t_list *temp = a;
+	t_list *temp = *a;
 	while (temp)
 	{
-		int *temp_int = temp->content;
-		ft_printf("%d", *temp_int);
+		ft_printf("%d", temp->content);
 		temp = temp->next;
 	}
 	return (0);
