@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/04 00:48:32 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/05 17:30:21 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ int	main(int argc, char **argv)
 {
 	t_list	**a;
 	t_list	**b;
+	t_list *temp;
 	int		taille;
 
 	if (argc <= 1)
@@ -131,8 +132,18 @@ int	main(int argc, char **argv)
 	}
 	a = malloc(sizeof(t_list));
 	*a = NULL;
+	b = malloc(sizeof(t_list));
+	*b = NULL;
 	make_storage(argc, argv, a);
-	t_list *temp = *a;
+	temp = *a;
+	while (temp)
+	{
+		ft_printf("%s\n", temp->content);
+		temp = temp->next;
+	}
+	reverse_rotate(a);
+	ft_printf("rra\n");
+	temp = *a;
 	while (temp)
 	{
 		ft_printf("%s\n", temp->content);

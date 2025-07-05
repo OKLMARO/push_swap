@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:33:03 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/04 01:21:46 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/05 17:35:12 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,54 @@
 
 void	swap(t_list **c)
 {
-	t_list	*temp;
-	t_list	*temp_next;
+	char	*temp;
 
-	if (!*c)
+	if (*c && (*c)->next)
+	{
+		temp = (*c)->content;
+		(*c)->content = (*c)->next->content;
+		(*c)->next->content = temp;
+	}
+	else
 		return ;
-	temp = *c;
-	temp_next = temp->next;
-	if (!temp_next)
-		return;
-	temp->next = temp_next->next;
-	temp_next->next = temp;
 }
 
 void	push(t_list **from, t_list **to)
 {
 	t_list	*temp;
 
-	temp = *from;
-	ft_lstadd_front(to, temp);
-	from = &temp->next;
-	ft_lstdelone(temp, free);
+	if (*from)
+	{
+		temp = *from;
+		*from = (*from)->next;
+		ft_lstadd_front(to, temp);
+	}
 }
 
 void	rotate(t_list **c)
 {
-	t_list	*temp;
-	t_list	*boucle;
+	t_list	*first;
 
-	temp = *c;
-	c = &temp->next;
-	boucle = *c;
-	while (boucle->next)
-		boucle = boucle->next;
-	boucle->next = temp;
+	if (!*c)
+		return ;
+	first = *c;
+	*c = first->next;
+	first->next = NULL;
+	ft_lstadd_back(c, first);
 }
 
 void	reverse_rotate(t_list **c)
 {
-	
+	t_list	*avant_der;
+	t_list	*last;
+
+	last = *c;
+	avant_der = *c;
+	while (last->next)
+		last = last->next;
+	while (avant_der->next->next)
+		avant_der = avant_der->next;
+	avant_der->next = NULL;
+	last->next = *c;
+	*c = last;
 }
