@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/05 17:30:21 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/09 13:36:04 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ int	main(int argc, char **argv)
 		ft_printf("%s\n", temp->content);
 		temp = temp->next;
 	}
-	reverse_rotate(a);
 	ft_printf("rra\n");
 	temp = *a;
 	while (temp)
