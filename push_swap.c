@@ -6,24 +6,11 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/10 16:05:18 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/11 03:41:22 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_double(char **tab_str)
-{
-	int	i;
-
-	i = 0;
-	while (tab_str[i])
-	{
-		free(tab_str[i]);
-		i++;
-	}
-	free(tab_str);
-}
 
 int	verify_argv_bis(int argc, char **argv)
 {
@@ -75,7 +62,7 @@ int	verify_argv(int argc, char **argv)
 	return (verify_argv_bis(argc, argv));
 }
 
-int	make_storage_bis(int argc, char **argv, t_list **a)
+int	make_storage_bis(char **argv, t_list **a)
 {
 	int		i;
 	t_list	*temp_lst;
@@ -112,14 +99,13 @@ int	make_storage(int argc, char **argv, t_list **a)
 		}
 		return (free_double(temp), 1);
 	}
-	return (make_storage_bis(argc, argv, a));
+	return (make_storage_bis(argv, a));
 }
 
 int	main(int argc, char **argv)
 {
 	t_list	**a;
 	t_list	**b;
-	t_list *temp;
 	int		taille;
 
 	if (argc <= 1)
