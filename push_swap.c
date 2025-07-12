@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/11 03:41:22 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/12 13:05:29 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,9 @@ int	main(int argc, char **argv)
 	*b = NULL;
 	make_storage(argc, argv, a);
 	radix_sort(a, b);
+	ft_lstclear(a, free);
+	ft_lstclear(b, free);
+	free(a);
+	free(b);
 	return (0);
 }

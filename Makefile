@@ -6,7 +6,7 @@
 #    By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/11 03:32:56 by oamairi           #+#    #+#              #
-#    Updated: 2025/07/11 03:39:40 by oamairi          ###   ########.fr        #
+#    Updated: 2025/07/12 13:13:13 by oamairi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(OBJS_bonus)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
