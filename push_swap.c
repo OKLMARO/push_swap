@@ -6,11 +6,12 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/12 13:05:29 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/22 17:21:59 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
 
 int	verify_argv_bis(int argc, char **argv)
 {
@@ -106,25 +107,24 @@ int	main(int argc, char **argv)
 {
 	t_list	**a;
 	t_list	**b;
-	int		taille;
 
 	if (argc <= 1)
 		return (1);
-	taille = verify_argv(argc, argv);
-	if (!taille)
+	if (!verify_argv(argc, argv))
 	{
-		ft_printf("Error");
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	a = malloc(sizeof(t_list));
 	*a = NULL;
+	make_storage(argc, argv, a);
+	if (!verify_duplicate(a))
+	{
+		write(2, "Error\n", 6);
+		return (ft_lstclear(a, free), free(a), 1);
+	}
 	b = malloc(sizeof(t_list));
 	*b = NULL;
-	make_storage(argc, argv, a);
 	radix_sort(a, b);
-	ft_lstclear(a, free);
-	ft_lstclear(b, free);
-	free(a);
-	free(b);
-	return (0);
+	return (ft_lstclear(b, free), ft_lstclear(a, free), free(b), free(a), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:30:38 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/11 03:41:36 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/22 17:15:03 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	tri_horrible(int *L, t_list **a);
 int		len_base(long int nb, char *base_to);
 void	radix_sort(t_list **a, t_list **b);
 void	free_double(char **tab_str);
+int		verify_duplicate(t_list **a);
 
 #endif
