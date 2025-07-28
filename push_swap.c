@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/22 17:21:59 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/07/28 15:29:49 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,20 +109,14 @@ int	main(int argc, char **argv)
 	t_list	**b;
 
 	if (argc <= 1)
-		return (1);
+		return (2);
 	if (!verify_argv(argc, argv))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		return (write(2, "Error\n", 6), 2);
 	a = malloc(sizeof(t_list));
 	*a = NULL;
 	make_storage(argc, argv, a);
 	if (!verify_duplicate(a))
-	{
-		write(2, "Error\n", 6);
-		return (ft_lstclear(a, free), free(a), 1);
-	}
+		return (ft_lstclear(a, free), free(a), write(2, "Error\n", 6), 2);
 	b = malloc(sizeof(t_list));
 	*b = NULL;
 	radix_sort(a, b);
