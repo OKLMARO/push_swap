@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:30:38 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/22 17:15:03 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/08/02 17:01:31 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ int		len_base(long int nb, char *base_to);
 void	radix_sort(t_list **a, t_list **b);
 void	free_double(char **tab_str);
 int		verify_duplicate(t_list **a);
+void	sort_five(t_list **a, t_list **b);
+void	sort_three(t_list **a);
+void	sort_two(t_list **a);
+void	sorting_function(t_list **a, t_list **b);
 
 #endif

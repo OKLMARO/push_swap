@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:33:03 by oamairi           #+#    #+#             */
-/*   Updated: 2025/07/05 17:35:12 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/08/02 16:25:43 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,24 @@ void	reverse_rotate(t_list **c)
 	avant_der->next = NULL;
 	last->next = *c;
 	*c = last;
+}
+
+int	verify_duplicate(t_list **a)
+{
+	t_list	*current;
+	t_list	*next;
+
+	current = *a;
+	while (current)
+	{
+		next = current->next;
+		while (next)
+		{
+			if (ft_atoi(current->content) == ft_atoi(next->content))
+				return (0);
+			next = next->next;
+		}
+		current = current->next;
+	}
+	return (1);
 }
