@@ -6,7 +6,7 @@
 #    By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/11 03:32:56 by oamairi           #+#    #+#              #
-#    Updated: 2025/08/02 17:04:57 by oamairi          ###   ########.fr        #
+#    Updated: 2025/08/16 16:31:43 by oamairi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ NAME = push_swap
 
 RM = rm -f
 
-CC = gcc
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft/libft.a
 PRINTF = ft_printf/libftprintf.a

@@ -6,7 +6,7 @@
 #    By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/05 22:34:10 by oamairi           #+#    #+#              #
-#    Updated: 2025/07/12 13:11:40 by oamairi          ###   ########.fr        #
+#    Updated: 2025/08/16 16:33:02 by oamairi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS =		ft_printf.c ft_putnbr.c \
 OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a
+
+CC = cc
 
 RM = rm -f
 
