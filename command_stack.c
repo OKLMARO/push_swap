@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:33:03 by oamairi           #+#    #+#             */
-/*   Updated: 2025/08/02 16:25:43 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:38:02 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	verify_duplicate(t_list **a)
 	current = *a;
 	while (current)
 	{
+		if (ft_atoi(current->content) > INT_MAX)
+			return (0);
 		next = current->next;
 		while (next)
 		{

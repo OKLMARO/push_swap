@@ -29,11 +29,11 @@ int	is_good(char str)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	is_negative;
-	int	res;
+	int		i;
+	int		is_negative;
+	long	res;
 
 	i = 0;
 	is_negative = 1;

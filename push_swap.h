@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:30:38 by oamairi           #+#    #+#             */
-/*   Updated: 2025/08/02 17:01:31 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:37:34 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+# include <limits.h>
 
 void	swap(t_list **c);
 void	push(t_list **from, t_list **to);
