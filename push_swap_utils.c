@@ -6,11 +6,25 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 16:53:07 by oamairi           #+#    #+#             */
-/*   Updated: 2025/08/16 16:27:03 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:07:13 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sort(t_list **a)
+{
+	t_list	*temp;
+
+	temp = *a;
+	while (temp->next)
+	{
+		if (temp->index > temp->next->index)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
 
 void	sorting_function(t_list **a, t_list **b)
 {

@@ -6,7 +6,7 @@
 /*   By: oamairi <oamairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:20:49 by oamairi           #+#    #+#             */
-/*   Updated: 2025/08/02 17:17:01 by oamairi          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:11:26 by oamairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ int	main(int argc, char **argv)
 		return (ft_lstclear(a, free), free(a), write(2, "Error\n", 6), 2);
 	*b = NULL;
 	init_lstindex(a);
-	sorting_function(a, b);
+	if (!is_sort(a))
+		sorting_function(a, b);
+	else
+		(ft_lstclear(b, free), ft_lstclear(a, free), free(b), free(a));
 	return (0);
 }
